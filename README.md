@@ -12,15 +12,14 @@ this project aims to propose a CartoGAN model for generating electronic maps tha
 8.	Compare the results from our model with the ones from other state-of-the-art GANs.  
 
 ### Tentative Schedule 
-Tasks	Expected due date
-Complete research references	Feb 27
-Search for suitable datasets 	March 6
-Implement our CartoGAN model by referencing the existing methods  	March 20
-Draft the mid-term report	March 24
-Try to improve the accuracy and aesthetics of our results	April 10
-Compare our model with other state-of-the-art models 	April 17
-Prepare for the final presentation	April 23
-Finish refining the webpage	May 5
+1. Complete research references: Feb 27
+2. Search for suitable datasets: March 6
+3. Implement our CartoGAN model by referencing the existing methods: March 20
+4. Draft the mid-term report: March 24
+5. Try to improve the accuracy and aesthetics of our results: April 10
+6. Compare our model with other state-of-the-art models: April 17
+7. Prepare for the final presentation: April 23
+8. Finish refining the webpage: May 5
 
 ### Major References:
 1. MapGAN: An Intelligent Generation Model for Network Tile Maps
