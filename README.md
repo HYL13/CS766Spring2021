@@ -1,5 +1,7 @@
 # CS766Spring2021
 
+### Motivation
+
 ### Procedures
 this project aims to propose a CartoGAN model for generating electronic maps that can be in multiple types and more realistic and aesthetic. In order to accomplish this goal, the steps below are required: 
 1.	Collect multiple types of electronic maps, e.g., Google Maps, OpenStreetMap, Baidu Maps, etc. 
