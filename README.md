@@ -35,7 +35,7 @@ Later, researchers have experimented with their proposed GANs on the translation
 
 
 ## Major changes compared with our proposal
-Given the limited time for the rest of the semester, it will be more feasible to complete a **comparative analysis** of the existing studies about map synthesis with cartographic design based on aerial images. We could continue to devise a novel, better GAN-related model for this application in the next step when time permits.
+Given the limited time for the rest of the semester, it will be more feasible to complete a **comparative analysis** of the existing studies about map synthesis with cartographic design based on aerial images. Currently we are on the right track with the progress. We could continue to devise a novel, better GAN-related model for this application in the next step when time permits.
 
 Accordingly, based on the full observance of its historical development, this project can potentially contribute to building a general framework in this field, providing a comprehensive comparison of the feasibility of different models, and discovering the unrevealed considerations of factors for further efforts in future.
 
