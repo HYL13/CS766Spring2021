@@ -1,7 +1,5 @@
 # An Overview of Map Synthesis with Cartographic Design Using Aerial Images
 
-[TOC]
-
 ## Motivation
 Map-related services are essential in our daily life, as we utilize maps for various scenarios/applications, e.g., daily commuting navigation, logistics distribution system, queries and visualization of geographic information, request of high-definition maps for self-driving vehicles, etc. Therefore, generating applicable maps and maintaining their latest versions are important tasks, which, unfortunately, can be a laborious and time-consuming process. Nowadays, most maps are created and updated based on the interpretation of aerial/satellite images and field surveys. On the bright side, with the rapid development of remote sensing technologies, many high spatial resolution (HSR) aerial images with a global coverage can be obtained frequently by sensors on aircraft/satellites. Thus, **generating map tiles automatically and aesthetically based on aerial images** has become an emerging research direction for mapping agencies and institutions.
 
@@ -15,44 +13,70 @@ Map-related services are essential in our daily life, as we utilize maps for var
 Later, researchers have experimented with their proposed GANs on the translation task using remote sensing images and Google maps. However, the purpose of previous map translation tasks was mainly to prove the feasibility of their proposed model. That is, as long as the generated images were in the style of applicable electronic maps, they were satisfied with the results, even although the quality of generated maps was far from ideal, and it was easy for people to distinguish between the real electronic maps and the generated ones. For example, Pix2pix (Isola et al., 2017) established a general framework for image translation based on a CGAN (Mirza & Osindero, 2014). However, satisfactory results cannot be achieved in specific scenarios, and the quality of the generated electronic map is poor. A breakthrough of CycleGAN (Zhu et al., 2017) is its ability to solve the problem of image translation in cases where paired training datasets cannot be obtained. When it is applied in the map translation scenario, it is still found that the resulting electronic map has many problems, such as image blurring, unclear texture, and incorrect color rendering. However, there are two recent, promising, and GAN-based studies about map synthesis and design using remote sensing images (Ganguli et al., 2019; Li et al., 2020), which are well worth exploring. 
 
 ## Methodology
+### Dataset preparation
 
+
+### Implementation of pix2pix for translating aerial images into Google Maps tiles
+
+
+### Implementation of CycleGAN for translating aerial images into Google Maps tiles
 
 
 ## Results 
+### Comparison of ground truth and pix2pix maps with different epoch numbers
 
+### Results of CycleGAN maps with different iterations
 
 
 ## Difficulties during implementation
+### Evaluating the results: qualitative v.s. quantitative? 
 
+### Model training run on CPU hardware
 
 
 ## Major changes compared with our proposal
+Given the limited time for the rest of the semester, it will be more feasible to complete a **comparative analysis** of the existing studies about map synthesis with cartographic design based on aerial images. We could continue to devise a novel, better GAN-related model for this application in the next step when time permits.
 
-
+Accordingly, based on the full observance of its historical development, this project can potentially contribute to building a general framework in this field, providing a comprehensive comparison of the feasibility of different models, and discovering the unrevealed considerations of factors for further efforts in future.
 
 ## TO-DOs
+### Adding other GAN-related models in the comparative analysis
+- mode seeking generative adversarial network (MSGAN)
+-	BicycleGAN
+-	StarGAN
+-	MapGAN (Li et al., 2020)
+### Comparing the advantages and disadvantages among different models
+> Table 1. An example of expected results
 
+Model |	Advantages | Disadvantages
+------------- | ------------- | -------------
+pix2pix	| Advantages | Disadvantages
+CycleGAN | Advantages | Disadvantages	
+…	| Advantages | Disadvantages	
 
 ## Procedures
-this project aims to propose a CartoGAN model for generating electronic maps that can be in multiple types and more realistic and aesthetic. In order to accomplish this goal, the steps below are required: 
+this project aims to conduct a comprehensive comparative analysis of existing models and eventually propose a CartoGAN model for generating electronic maps that can be in multiple types and more realistic and aesthetic. In order to accomplish this goal, the steps below are required: 
 1.	Collect multiple types of electronic maps, e.g., Google Maps, OpenStreetMap, Baidu Maps, etc. 
-2.	Search for usable HSR remote sensing images corresponded to those electronic maps, and use multiple bands (e.g., infrared) in order to improve the model’s ability in feature recognition. 
-3.	Construct a classifier similar with (Li et al., 2020) to help the model learn the differences among multiple types of electronic maps so that the model can determine whether the generated electronic map belongs to the correct type during the training process.
-4.	Incorporate the concept of “render matrix” and think about its structure with less memory used. 
-5.	Build effective architectures of the generator and the discriminator. 
-6.	Consider suitable loss functions for the model, e.g., reconstruction loss (for pixel-wise accuracy), a style loss (to reduce high frequency artifacts), and the GAN loss (a feature-wise learnt similarity metric or content loss). 
-7.	Determine the evaluation metrics of the model, e.g., Kernel Maximum Mean Discrepancy (Kernel MMD), Fréchet Inception Distance (FID), Mode Score, Inception Score, Pixel-Level Translation Accuracy, etc.
-8.	Compare the results from our model with the ones from other state-of-the-art GANs.  
+2.	Search for usable aerial images corresponded to those electronic maps, and use multiple bands (e.g., infrared) in order to improve the model’s ability in feature recognition. 
+3.	Build effective GAN-related architectures of the generator and the discriminator for different models. 
+4.	Consider suitable loss functions for the model, e.g., reconstruction loss (for pixel-wise accuracy), a style loss (to reduce high frequency artifacts), and the GAN loss (a feature-wise learnt similarity metric or content loss). 
+5.	Determine the evaluation metrics of the model, e.g., Kernel Maximum Mean Discrepancy (Kernel MMD), Fréchet Inception Distance (FID), Mode Score, Inception Score, Pixel-Level Translation Accuracy, etc.
+6.	Conduct a comprehensive comparative analysis of the state-of-the-art GAN-related models for map synthesis with cartographic design based on aerial images.  
+7.	Discover the unrevealed considerations of factors for further efforts in future.
+8.	Devise a novel, better GAN-related model for this application.
 
 ## Tentative Schedule 
-1. Complete research references: Feb 27
-2. Search for suitable datasets: March 6
-3. Implement our CartoGAN model by referencing the existing methods: March 20
-4. Draft the mid-term report: March 24
-5. Try to improve the accuracy and aesthetics of our results: April 10
-6. Compare our model with other state-of-the-art models: April 17
-7. Prepare for the final presentation: April 23
-8. Finish refining the webpage: May 5
+
+task | deadline |
+------------- | ------------- |
+Complete research references | Feb 27
+Search for suitable datasets | March 6
+Implement the existing methods | March 20
+Draft the mid-term report | March 24
+Try to improve the accuracy and aesthetics of the results | April 10
+Compare the implemented models with other state-of-the-art models | April 17
+Prepare for the final presentation | April 23
+Finish refining the webpage | May 5
 
 ## Major References:
 1. Ganguli, S., Garzon, P., & Glaser, N. (2019). GeoGAN: A Conditional GAN with Reconstruction and Style Loss to Generate Standard Layer of Maps from Satellite Images. ArXiv.
