@@ -45,6 +45,7 @@ Accordingly, based on the full observance of its historical development, this pr
 -	BicycleGAN
 -	StarGAN
 -	MapGAN (Li et al., 2020)
+
 ### Comparing the advantages and disadvantages among different models
 > Table 1. An example of expected results
 
