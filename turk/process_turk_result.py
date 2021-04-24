@@ -23,14 +23,18 @@ if __name__ == '__main__':
     df = pd.read_csv(path, index_col=False)
     right_labels = {'BicycleGAN': 0, 'Pix2pix': 0, 'CycleGAN': 0}
     wrong_labels = {'BicycleGAN': 0, 'Pix2pix': 0, 'CycleGAN': 0}
+    wasted = 0
     for index, row in df.iterrows():
         # real_A = row["Input.sense_img_url"]
         # the label of the image that workers picked
         selected_label = row['Answer.category.label']
         if selected_label == 1:
             img = row["Input.input_img1_url"]
-        else:
+        elif selected_label == 2:
             img = row["Input.input_img2_url"]
+        else:
+            wasted += 1
+            continue
         label = label_classify(img)
         model = model_classify(img)
         if not label:
