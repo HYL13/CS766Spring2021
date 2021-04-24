@@ -41,4 +41,6 @@ if __name__ == '__main__':
             wrong_labels[model] += 1
         else:
             right_labels[model] += 1
-    # print(right_labels, wrong_labels)
+    # more wrongly classified labels suggest better performance
+    print("Rightly classified: ", right_labels)
+    print("wrongly classified: ", wrong_labels)
