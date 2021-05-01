@@ -1,1 +1,1 @@
-ipynb files
+We used pix2pix, CycleGAN, BicycleGAN, StarGAN for the task of image translation from satellite images to maps. The codes used for each model (written ones as well as modified ones based on the original model) are shown in the corresponidng folders.
