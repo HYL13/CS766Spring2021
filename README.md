@@ -14,70 +14,70 @@ Later, researchers have experimented with their proposed GANs on the translation
 
 ## Methodology
 ### Dataset preparation
+![image](images/dataset.png)
+> Figure 2. Seven datasets are included in our project. The first one is satellite images, which are the source for image translation, and then we collected six different kinds of targeted maps, such as google maps, baidu maps, world maps, etc.
+
+### State-of-the-art models for image translation
+![4 models](images/4models.png)
+> Figure 3. summary of four state-of-the-art models for image translation
+
+#### 1. Pix2pix
+![pix2pix](images/p2p.png)
+> Figure 4. architecture of pix2pix includes a U-net Generator and a PatchGAN discriminator. It is easy to implement with less computations, however, one of the disadvantages is that it requires paired datasets for training.
+
+#### 2. CycleGAN
+![CycleGAN](images/cyclegan.png)
+> Figure 5. CycleGan doesn't require paired datasets for training. The architecture of CycleGAN includes two generators G and F. G generates Y domain images based on X domain input, while F generates the versus. The cycle process is constrained by the cycle-consistency loss. However, one of the disadvantages for CycleGAN is lacking diversity of styles for the output.
+
+#### 3. BicycleGAN
+![BicycleGAN](images/bicycleGan.png)
+> Figure 6. BicycleGAN can produce multiple styles for the targeted domain. The architecture of BicycleGAN includes two cycle processes. One involves the ground truth B versus the output B hat, And the other cycle is about a randomly sampled latent code versus the reconstructed latent code. However, one of the weaknesses is that BicycleGAN performs image translation only between two domains.
+
+#### 4. StanGAN
+![stanGAN](images/stanGan.png)
+> Figure 7. StarGAN can produce multiple domains (for example, 5 domains here) with only ONE generator, instead of calculating n * (n-1) generators if we have n domains.
+
+### Workflow
+![Workflow](images/workflow8.png)
+> Figure 8. We conducted 6 experiments with different GAN models and different targeted domains. Each experiment will be fed with its corresponding training input, and then produce the output. And each output will be evaluated by quantitative metrics as well as Human evaluation.
+
+## Results
+### Pix2pix-sat2google
+![Pix2pix-sat2google](images/Pix2pix-sat2google.png)
+> Figure 9. for the experiment of Pix2pix for sat2google, the result seems fair. Most of the generated features, such as buildings, waterbodies, roads, and green space are located correctly, with shapes and colors matching with the ground truth.
+
+### CycleGAN-sat2google, sat2baidu, sat2worldmap
+![CycleGAN-sat2google, sat2baidu, sat2worldmap](images/CycleGAN-sat2google-sat2baidu-sat2worldmap.png)
+> Figure 10. First, for sat2google, the roads seem not be captured very well, but the green space seem even more fitting compared with the ground truth. As for sat2baidu and sat2worldmap, Both results are not very realistic, although most of the ground features still can be captured, such as roads and rivers.
+
+### BicycleGAN-sat2google-CycleGAN-sat2google
+![BicycleGAN-sat2google-CycleGAN-sat2google](images/BicycleGAN-sat2google-CycleGAN-sat2google.png)
+> Figure 11. Next is the result from BicycleGAN for sat2google, with a comparison to CycleGAN. Although BicycleGAN can produce multiple styles for the google maps, yet many green space regions are overfitting. Specifically, BicycleGAN misinterprets the waterbodies as the green space, while the CycleGAN can capture waterbodies correctly.
 
 
-### Implementation of pix2pix for translating aerial images into Google Maps tiles
+### StarGAN-sat2all
+![StarGAN-sat2all](images/StarGAN-sat2all.png)
+> Figure 12. Lastly, it is the result from StarGAN for sat 2 all maps. As we can see, the results are barely desirable. The model only capture the latent code of the targeted domain, but cannot recognize the features’ locations and shapes. We assume this issue might be due to feature mismatch. So, the original dataset for the stargan paper is human face, and each image has all face features such as eyes, nose, mouth, etc. But as for the datasets in map generation, each image does not necessarily have all ground features, such as buildings, waterbodies, roads, green space, etc. Therefore, stargan may not be suitable for map synthesis here.
 
+### Evaluation
+#### Human
+![Amazon Mechanical Turk](images/turk.png)
+> Figure 13. Amazon Mechanical Turk task interface
+#### Quantitative
+![Quantitative](images/eval.png)
+> Figure 14. Finally, it’s the evaluation for each experiment. As we can see, the Pix2pix model implemented by keras achieves the best performance, based on both FID scores and AMT votes. Followed by the performances of cyclegans and bicyclegan. What is FID/LPIPS? Fréchet Inception Distance: The Fréchet inception distance (FID) is a metric used to assess the quality of images created by GANs.[1] Unlike the earlier inception score (IS), which evaluates only the distribution of generated images, the FID is a metric that calculates the distance between the feature vectors calculated for real and generated images. The score summarizes how similar the two groups are in terms of statistics on computer vision features using the inception v3 model for image classification. Lower scores indicate the two groups of images are more similar, or have more similar statistics. LPIPS - learned perceptual image patch similarity It calculates the similarity of two patches based on the learnt perceptions just like human.
 
-### Implementation of CycleGAN for translating aerial images into Google Maps tiles
+## Discussions
+### Highlights of learning:
+1. GANs being powerful in map synthesis; 
+2. Better understanding the core ideas, architectures, pros & cons of different GANs;
+3. Implementing different GANs; 
+4. Evaluating of the performances of GANs.
 
-
-## Results 
-### Comparison of ground truth and pix2pix maps with different epoch numbers
-
-### Results of CycleGAN maps with different iterations
-
-
-## Difficulties during implementation
-### Evaluating the results: qualitative v.s. quantitative? 
-
-### Model training run on CPU hardware
-
-
-## Major changes compared with our proposal
-Given the limited time for the rest of the semester, it will be more feasible to complete a **comparative analysis** of the existing studies about map synthesis with cartographic design based on aerial images. Currently we are on the right track with the progress. We could continue to devise a novel, better GAN-related model for this application in the next step when time permits.
-
-Accordingly, based on the full observance of its historical development, this project can potentially contribute to building a general framework in this field, providing a comprehensive comparison of the feasibility of different models, and discovering the unrevealed considerations of factors for further efforts in future.
-
-## TO-DOs
-### Adding other GAN-related models in the comparative analysis
-- mode seeking generative adversarial network (MSGAN)
--	BicycleGAN
--	StarGAN
--	MapGAN (Li et al., 2020)
-
-### Comparing the advantages and disadvantages among different models
-> Table 1. An example of expected results
-
-Model |	Advantages | Disadvantages
-------------- | ------------- | -------------
-pix2pix	| Advantages | Disadvantages
-CycleGAN | Advantages | Disadvantages	
-…	| Advantages | Disadvantages	
-
-## Procedures
-this project aims to conduct a comprehensive comparative analysis of existing models and eventually propose a CartoGAN model for generating electronic maps that can be in multiple types and more realistic and aesthetic. In order to accomplish this goal, the steps below are required: 
-1.	Collect multiple types of electronic maps, e.g., Google Maps, OpenStreetMap, Baidu Maps, etc. 
-2.	Search for usable aerial images corresponded to those electronic maps, and use multiple bands (e.g., infrared) in order to improve the model’s ability in feature recognition. 
-3.	Build effective GAN-related architectures of the generator and the discriminator for different models. 
-4.	Consider suitable loss functions for the model, e.g., reconstruction loss (for pixel-wise accuracy), a style loss (to reduce high frequency artifacts), and the GAN loss (a feature-wise learnt similarity metric or content loss). 
-5.	Determine the evaluation metrics of the model, e.g., Kernel Maximum Mean Discrepancy (Kernel MMD), Fréchet Inception Distance (FID), Mode Score, Inception Score, Pixel-Level Translation Accuracy, etc.
-6.	Conduct a comprehensive comparative analysis of the state-of-the-art GAN-related models for map synthesis with cartographic design based on aerial images.  
-7.	Discover the unrevealed considerations of factors for further efforts in future.
-8.	Devise a novel, better GAN-related model for this application.
-
-## Tentative Schedule 
-
-task | deadline |
-------------- | ------------- |
-Complete research references | Feb 27
-Search for suitable datasets | March 6
-Implement the existing methods | March 20
-Draft the mid-term report | March 24
-Try to improve the accuracy and aesthetics of the results | April 10
-Compare the implemented models with other state-of-the-art models | April 17
-Prepare for the final presentation | April 23
-Finish refining the webpage | May 5
+### Future works:
+1. To explore the multispectral information of satellite images; 
+2. To try image segmentation for different ground features; 
+3. To design a “one-for-all” GAN model for map synthesis.
 
 ## Major References
 1. Ganguli, S., Garzon, P., & Glaser, N. (2019). GeoGAN: A Conditional GAN with Reconstruction and Style Loss to Generate Standard Layer of Maps from Satellite Images. ArXiv.
