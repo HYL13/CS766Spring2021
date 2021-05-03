@@ -64,6 +64,7 @@ Furthermore, there are two other recent, promising, and GAN-based studies for im
 
 ### Datasets
 
+<img src="website_images/datasets.png" alt="datasets" width="800"/>
 ![datasets](website_images/datasets.png)
 > Figure 2. Seven datasets with detailed information in our project. 
 
@@ -188,7 +189,7 @@ As we can see, the Pix2pix model implemented by keras achieves the best performa
 <img src="website_images/NDWI.png" alt="NDWI" width="400"/>
 > NDWI can be calculated by Near Infrared (NIR) and SWIR bands.
 
-![NDVI](website_images/NDVI.png)
+<img src="website_images/NDVI.png" alt="NDVI" width="400"/>
 > NDVI can be calculated by Near Infrared (NIR) and Visual bands.
 
 2. To try image segmentation for different ground features;
