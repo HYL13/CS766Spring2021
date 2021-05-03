@@ -196,9 +196,11 @@ As we can see, the Pix2pix model implemented by keras achieves the best performa
 	- In the field of remote sensing, it is well-known that waterbodies and vegetations could be distinguished by specific combinations of different reflected spectrums/bands, e.g., using the equations of Normalized Difference Water Index (NDWI) and Normalized Difference Vegetation Index (NDVI).
 
 <img src="website_images/NDWI.png" alt="NDWI" width="200"/>
+
 > NDWI can be calculated by Near Infrared (NIR) and SWIR bands.
 
 <img src="website_images/NDVI.png" alt="NDVI" width="200"/>
+
 > NDVI can be calculated by Near Infrared (NIR) and Visual bands.
 
 - To try image segmentation for different ground features;
