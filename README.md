@@ -1,14 +1,14 @@
 # Map synthesis based on satellite images
 
 ## Table of Contents
-- [1. Motivation](##1.-motivation)
+- [Motivation](##motivation)
 - [2. Literature Review](##2.-literature-Review)
 - [3. Methodology](##3.-methodology)
 	- [3.1. Datasets](###3.1.-datasets)
 
 
 
-## 1. Motivation
+## Motivation
 
 Map-related services are essential in our daily life, as we utilize maps for various scenarios/applications, e.g., daily
 commuting navigation, logistics distribution system, queries and visualization of geographic information, request of
