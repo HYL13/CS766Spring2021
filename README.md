@@ -1,7 +1,7 @@
 # Map synthesis based on satellite images
 
 ## Table of Contents
-- [Motivation](##motivation)
+- [Motivation](##Motivation)
 - [2. Literature Review](##2.-literature-Review)
 - [3. Methodology](##3.-methodology)
 	- [3.1. Datasets](###3.1.-datasets)
