@@ -47,7 +47,7 @@ Furthermore, there are two other recent, promising, and GAN-based studies for im
 
 ## Methodology
 
-### 3.1. Datasets
+### Datasets
 
 ![image](images/dataset.png)
 > Figure 2. Seven datasets with detailed information in our project. 
