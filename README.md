@@ -27,11 +27,11 @@
 
 ## Motivation
 
-Map-related services are essential in our daily life, as we utilize maps for various scenarios/applications, e.g., daily
+Map-related services are essential in our daily life, as we utilize maps for various scenarios and applications, e.g., daily
 commuting navigation, logistics distribution system, queries and visualization of geographic information, request of
 high-definition maps for self-driving vehicles, etc. Therefore, generating applicable maps and maintaining their latest
 versions are important tasks, which, unfortunately, can be a laborious and time-consuming process. Nowadays, most maps
-are created and updated based on the interpretation of aerial/satellite images and field surveys. On the bright side,
+are created and updated based on the interpretation of satellite images and field surveys. On the bright side,
 with the rapid development of remote sensing technologies, many high spatial resolution (HSR) satellite images with a
 global coverage can be obtained frequently by sensors on aircraft/satellites. Thus, **generating map tiles automatically
 and aesthetically based on satellite images** has become an emerging research direction for mapping agencies and
@@ -61,7 +61,7 @@ Furthermore, there are two other recent, promising, and GAN-based studies for im
 
 ### Datasets
 
-![image](website_images/dataset.png)
+![image](website_images/datasets.png)
 > Figure 2. Seven datasets with detailed information in our project. 
 
 > The first one is satellite images, which are the source for image translation. On the other hand, we collected six different kinds of targeted maps, such as google maps, baidu maps, world maps, etc.
