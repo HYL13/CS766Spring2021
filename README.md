@@ -64,7 +64,6 @@ Furthermore, there are two other recent, promising, and GAN-based studies for im
 
 ### Datasets
 
-<img src="website_images/datasets.png" alt="datasets" width="800"/>
 ![datasets](website_images/datasets.png)
 > Figure 2. Seven datasets with detailed information in our project. 
 
@@ -79,6 +78,7 @@ The first one is satellite images, which are the source for image translation. O
 
 #### Pix2pix
 
+<img src="website_images/p2p.png" alt="p2p" width="400"/>
 ![pix2pix](website_images/p2p.png)
 > Figure 4. The architecture of pix2pix. 
 
@@ -102,8 +102,7 @@ Our hybrid BicycleGAN method combines constraints in both directions (c) and (d)
 > We implemented BicycleGAN as the pytorch default setting in our project, and you could check it out in our github "code" folder For more details. 
 
 #### StarGAN
-
-![starGAN](website_images/starGan.png)
+<img src="website_images/starGan.png" alt="starGan" width="500"/>
 ![starGAN](website_images/starGan2.png)
 > Figure 7. The architecture of StarGAN, consisting of two modules, a discriminator D and a generator G. (a) D learns to distinguish between real and fake images and classify the real images to its corresponding domain. (b) G takes in as input both the image and target domain label and generates an fake image. The target domain label is spatially replicated and concatenated with the input image. (c) G tries to reconstruct the original image from the fake image given the original domain label. (d) G tries to generate images indistinguishable from real images and classifiable as target domain by D.
 
@@ -127,7 +126,7 @@ We conducted 6 experiments with different GAN models and different targeted doma
 > The result of each experiment has been uploaded to our github "results" folder. You can find more detailed information with all generated images and ground truth images for each experiment. Here we just showed some typical samples of the results. 
 
 ### Pix2pix-sat2google
-
+![Pix2pix-sat2google-2](website_images/details_groundtruth_pix2pix.png)
 ![Pix2pix-sat2google](website_images/Pix2pix-sat2google.png)
 > Figure 10. The results of Pix2pix-sat2google.
 
@@ -186,10 +185,10 @@ As we can see, the Pix2pix model implemented by keras achieves the best performa
 1. To explore the multispectral information of satellite images;
 	- In the field of remote sensing, it is well-known that waterbodies and vegetations could be distinguished by specific combinations of different reflected spectrums/bands, e.g., using the equations of Normalized Difference Water Index (NDWI) and Normalized Difference Vegetation Index (NDVI).
 
-<img src="website_images/NDWI.png" alt="NDWI" width="400"/>
+<img src="website_images/NDWI.png" alt="NDWI" width="200"/>
 > NDWI can be calculated by Near Infrared (NIR) and SWIR bands.
 
-<img src="website_images/NDVI.png" alt="NDVI" width="400"/>
+<img src="website_images/NDVI.png" alt="NDVI" width="200"/>
 > NDVI can be calculated by Near Infrared (NIR) and Visual bands.
 
 2. To try image segmentation for different ground features;
