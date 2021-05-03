@@ -185,7 +185,6 @@ As we can see, the Pix2pix model implemented by keras achieves the best performa
 1. To explore the multispectral information of satellite images;
 	- In the field of remote sensing, it is well-known that waterbodies and vegetations could be distinguished by specific combinations of different reflected spectrums/bands, e.g., using the equations of Normalized Difference Water Index (NDWI) and Normalized Difference Vegetation Index (NDVI).
 
-![NDWI](website_images/NDWI.png)
 <img src="website_images/NDWI.png" alt="NDWI" width="400"/>
 > NDWI can be calculated by Near Infrared (NIR) and SWIR bands.
 
