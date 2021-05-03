@@ -72,7 +72,9 @@ The first one is satellite images, which are the source for image translation. O
 ### State-of-the-art models for image translation and implementations
 
 ![4 models](website_images/4models.png)
-> Figure 3. Summary of four state-of-the-art models for image translation.
+> Figure 3. Summary of four state-of-the-art models for image translation. 
+
+> The codes for the implementation of each model have been uploaded to our github "code" folder. 
 
 #### Pix2pix
 
@@ -120,6 +122,8 @@ Our hybrid BicycleGAN method combines constraints in both directions (c) and (d)
 We conducted 6 experiments with different GAN models and different targeted domains. Each experiment will be fed with its corresponding training input, and then produce the output. And each output will be evaluated by quantitative metrics (e.g., FID and LPIPS) as well as human evaluation (e.g., Amazon Mechanical Turk).
 
 ## Results and analysis
+
+> The result of each experiment has been uploaded to our github "results" folder. You can find more detailed information with the generated images and the ground truth images for each experiment.
 
 ### Pix2pix-sat2google
 
