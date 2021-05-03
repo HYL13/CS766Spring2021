@@ -1,6 +1,6 @@
 # Map synthesis based on satellite images
 
-[TOC]
+[Headers](#h1)  
 
 ## 1. Motivation
 
