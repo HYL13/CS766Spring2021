@@ -103,6 +103,7 @@ Our hybrid BicycleGAN method combines constraints in both directions (c) and (d)
 
 #### StarGAN
 <img src="website_images/starGan.png" alt="starGan" width="500"/>
+
 ![starGAN](website_images/starGan2.png)
 > Figure 7. The architecture of StarGAN, consisting of two modules, a discriminator D and a generator G. (a) D learns to distinguish between real and fake images and classify the real images to its corresponding domain. (b) G takes in as input both the image and target domain label and generates an fake image. The target domain label is spatially replicated and concatenated with the input image. (c) G tries to reconstruct the original image from the fake image given the original domain label. (d) G tries to generate images indistinguishable from real images and classifiable as target domain by D.
 
@@ -127,7 +128,6 @@ We conducted 6 experiments with different GAN models and different targeted doma
 
 ### Pix2pix-sat2google
 ![Pix2pix-sat2google-2](website_images/details_groundtruth_pix2pix.png)
-![Pix2pix-sat2google](website_images/Pix2pix-sat2google.png)
 > Figure 10. The results of Pix2pix-sat2google.
 
 For the experiment of Pix2pix for sat2google, the result seems fair. Most of the generated features, such as buildings, waterbodies, roads, and green space are located correctly, with shapes and colors matching with the ground truth.
