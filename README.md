@@ -1,8 +1,11 @@
 # Map synthesis based on satellite images
 
 ## Table of Contents
-[1. Motivation](#1.-motivation)
-[2. Literature Review](#2.-literature-Review)
+- [1. Motivation](##1.-motivation)
+- [2. Literature Review](##2.-literature-Review)
+- [3. Methodology](##3.-methodology)
+	- [3.1. Datasets](###3.1.-datasets)
+
 
 
 ## 1. Motivation
@@ -43,7 +46,7 @@ Furthermore, there are two other recent, promising, and GAN-based studies for im
 
 ## 3. Methodology
 
-### 3.1. Dataset preparation
+### 3.1. Datasets
 
 ![image](images/dataset.png)
 > Figure 2. Seven datasets with detailed information in our project. 
