@@ -123,7 +123,7 @@ We conducted 6 experiments with different GAN models and different targeted doma
 
 ## Results and analysis
 
-> The result of each experiment has been uploaded to our github "results" folder. You can find more detailed information with the generated images and the ground truth images for each experiment.
+> The result of each experiment has been uploaded to our github "results" folder. You can find more detailed information with all generated images and ground truth images for each experiment. Here we just showed some typical samples of the results. 
 
 ### Pix2pix-sat2google
 
