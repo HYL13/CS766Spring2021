@@ -6,7 +6,23 @@
 * [Literature Review](#literature-review)
 * [Methodology](#methodology)
 	* [Datasets](#datasets)
-
+	* [State-of-the-art models for image translation](#state-of-the-art-models-for-image-translation)
+		* [Pix2pix](#pix2pix)
+		* [CycleGAN](#cycleGAN)
+		* [BicycleGAN](#bicycleGAN)
+		* [StarGAN](#starGAN)
+	* [Workflow](#workflow)
+* [Results and analysis](#results-and-analysis)
+	* [Pix2pix-sat2google](#pix2pix-sat2google)
+	* [CycleGAN-sat2google sat2baidu sat2worldmap](#cycleGAN-sat2google-sat2baidu-sat2worldmap)
+	* [BicycleGAN-sat2google-CycleGAN-sat2google](#bicycleGAN-sat2google-cycleGAN-sat2google)
+	* [StarGAN-sat2all](#starGAN-sat2all)
+* [Evaluation](#evaluation)
+	* [Human metrics-Amazon Mechanical Turk](#human-metrics-amazon-mechanical-turk)
+	* [Quantitative metrics](#quantitative-metrics)
+* [Discussions](#discussions)
+	* [Highlights of learning](#highlights-of-learning)
+	* [Future works](#future-works)
 <!--te-->
 
 ## Motivation
@@ -54,80 +70,80 @@ Furthermore, there are two other recent, promising, and GAN-based studies for im
 
 > The first one is satellite images, which are the source for image translation. On the other hand, we collected six different kinds of targeted maps, such as google maps, baidu maps, world maps, etc.
 
-### 3.2. State-of-the-art models for image translation
+### State-of-the-art models for image translation
 
 ![4 models](images/4models.png)
 > Figure 3. summary of four state-of-the-art models for image translation
 
-#### 3.2.1. Pix2pix
+#### Pix2pix
 
 ![pix2pix](images/p2p.png)
 > Figure 4. architecture of pix2pix includes a U-net Generator and a PatchGAN discriminator. It is easy to implement with less computations, however, one of the disadvantages is that it requires paired datasets for training.
 
-#### 3.2.2. CycleGAN
+#### CycleGAN
 
 ![CycleGAN](images/cyclegan.png)
 > Figure 5. CycleGan doesn't require paired datasets for training. The architecture of CycleGAN includes two generators G and F. G generates Y domain images based on X domain input, while F generates the versus. The cycle process is constrained by the cycle-consistency loss. However, one of the disadvantages for CycleGAN is lacking diversity of styles for the output.
 
-#### 3.2.3. BicycleGAN
+#### BicycleGAN
 
 ![BicycleGAN](images/bicycleGan.png)
 > Figure 6. BicycleGAN can produce multiple styles for the targeted domain. The architecture of BicycleGAN includes two cycle processes. One involves the ground truth B versus the output B hat, And the other cycle is about a randomly sampled latent code versus the reconstructed latent code. However, one of the weaknesses is that BicycleGAN performs image translation only between two domains.
 
-#### 3.2.4. StanGAN
+#### StarGAN
 
 ![stanGAN](images/stanGan.png)
 > Figure 7. StarGAN can produce multiple domains (for example, 5 domains here) with only ONE generator, instead of calculating n * (n-1) generators if we have n domains.
 
-### 3.3. Workflow
+### Workflow
 
 ![Workflow](images/workflow8.png)
 > Figure 8. We conducted 6 experiments with different GAN models and different targeted domains. Each experiment will be fed with its corresponding training input, and then produce the output. And each output will be evaluated by quantitative metrics as well as Human evaluation.
 
-## 4. Results
+## Results and analysis
 
-### 4.1. Pix2pix-sat2google
+### Pix2pix-sat2google
 
 ![Pix2pix-sat2google](images/Pix2pix-sat2google.png)
 > Figure 9. for the experiment of Pix2pix for sat2google, the result seems fair. Most of the generated features, such as buildings, waterbodies, roads, and green space are located correctly, with shapes and colors matching with the ground truth.
 
-### 4.2. CycleGAN-sat2google, sat2baidu, sat2worldmap
+### CycleGAN-sat2google sat2baidu sat2worldmap
 
 ![CycleGAN-sat2google, sat2baidu, sat2worldmap](images/CycleGAN-sat2google-sat2baidu-sat2worldmap.png)
 > Figure 10. First, for sat2google, the roads seem not be captured very well, but the green space seem even more fitting compared with the ground truth. As for sat2baidu and sat2worldmap, Both results are not very realistic, although most of the ground features still can be captured, such as roads and rivers.
 
-### 4.3 BicycleGAN-sat2google-CycleGAN-sat2google
+### BicycleGAN-sat2google-CycleGAN-sat2google
 
 ![BicycleGAN-sat2google-CycleGAN-sat2google](images/BicycleGAN-sat2google-CycleGAN-sat2google.png)
 > Figure 11. Next is the result from BicycleGAN for sat2google, with a comparison to CycleGAN. Although BicycleGAN can produce multiple styles for the google maps, yet many green space regions are overfitting. Specifically, BicycleGAN misinterprets the waterbodies as the green space, while the CycleGAN can capture waterbodies correctly.
 
-### 4.4 StarGAN-sat2all
+### StarGAN-sat2all
 
 ![StarGAN-sat2all](images/StarGAN-sat2all.png)
 > Figure 12. Lastly, it is the result from StarGAN for sat 2 all maps. As we can see, the results are barely desirable. The model only capture the latent code of the targeted domain, but cannot recognize the features’ locations and shapes. We assume this issue might be due to feature mismatch. So, the original dataset for the stargan paper is human face, and each image has all face features such as eyes, nose, mouth, etc. But as for the datasets in map generation, each image does not necessarily have all ground features, such as buildings, waterbodies, roads, green space, etc. Therefore, stargan may not be suitable for map synthesis here.
 
-### 5. Evaluation
+### Evaluation
 
-#### 5.1. Human metrics - Amazon Mechanical Turk (AMT)
+#### Human metrics-Amazon Mechanical Turk
 
 ![Amazon Mechanical Turk](images/turk.png)
-> Figure 13. AMT task interface
+> Figure 13. Amazon Mechanical Turk (AMT) task interface
 
-#### 5.2. Quantitative
+#### Quantitative metrics
 
 ![Quantitative](images/eval.png)
 > Figure 14. Finally, it’s the evaluation for each experiment. As we can see, the Pix2pix model implemented by keras achieves the best performance, based on both FID scores and AMT votes. Followed by the performances of cyclegans and bicyclegan. What is FID/LPIPS? Fréchet Inception Distance: The Fréchet inception distance (FID) is a metric used to assess the quality of images created by GANs.[1] Unlike the earlier inception score (IS), which evaluates only the distribution of generated images, the FID is a metric that calculates the distance between the feature vectors calculated for real and generated images. The score summarizes how similar the two groups are in terms of statistics on computer vision features using the inception v3 model for image classification. Lower scores indicate the two groups of images are more similar, or have more similar statistics. LPIPS - learned perceptual image patch similarity It calculates the similarity of two patches based on the learnt perceptions just like human.
 
-## 6. Discussions
+## Discussions
 
-### 6.1. Highlights of learning:
+### Highlights of learning
 
 1. GANs being powerful in map synthesis;
 2. Better understanding the core ideas, architectures, pros & cons of different GANs;
 3. Implementing different GANs;
 4. Evaluating of the performances of GANs.
 
-### 6.2. Future works:
+### Future works
 
 1. To explore the multispectral information of satellite images;
 2. To try image segmentation for different ground features;
