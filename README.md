@@ -130,7 +130,13 @@ We conducted 6 experiments with different GAN models and different targeted doma
 ![Pix2pix-sat2google-2](website_images/details_groundtruth_pix2pix.png)
 > Figure 10. The results of Pix2pix-sat2google.
 
-For the experiment of Pix2pix for sat2google, the result seems fair. Most of the generated features, such as buildings, waterbodies, roads, and green space are located correctly, with shapes and colors matching with the ground truth.
+To explore the pix2pix performance in detail, we plotted 20 different sites from source, ground true, and generated images by pix2pix with 100 epochs. Generally speaking, the results from the pix2pix model are satisfying for the translation task of aerial images->Google Maps. The generated maps well preserve the locations, colors, textures, and shapes of different landscape features, including main roads (white lines) and highways (oranges curves), greens (e.g., parks, forests, gardens), residential neighborhoods and communities, building blocks, commercial places, water areas, etc. 
+However, some obvious “flaws” still can be detected based on our observation:
+1. Some shortcuts in greens (see (c) and (t)), railways (e.g., a railway station in (b), a railway lane in (j)), and non-directional ramps/ring roads (see (g)) failed to be translated and went missing;
+2. The connectedness of different landscapes was strengthened too much in our pix2pix model, resulting in the loss of detailed, small-sized features surrounded by a larger homogeneous region. For example, the generated image in (g) failed to delineate the small group of buildings among the greens in the bottom-left corner; the generated image in (d) did not produce the small lake/pond in the bottom-left corner;
+3. The boundaries of the landscape features are blurred and coarse compared with the ground truth, especially for the buildings. 
+
+There is one possible reason behind these “flaws” – the frequencies of some specific features inferred from the training dataset are insufficient, therefore, the pix2pix model could not gather enough information to identify those features. For example, non-directional ramps/ring roads barely show up in the training dataset, so it is beyond the prediction capability of the pix2pix model to accurately delineate them in the output image. 
 
 ### CycleGAN-sat2google sat2baidu sat2worldmap
 
@@ -182,7 +188,7 @@ As we can see, the Pix2pix model implemented by keras achieves the best performa
 
 ### Future works
 
-1. To explore the multispectral information of satellite images;
+- To explore the multispectral information of satellite images;
 	- In the field of remote sensing, it is well-known that waterbodies and vegetations could be distinguished by specific combinations of different reflected spectrums/bands, e.g., using the equations of Normalized Difference Water Index (NDWI) and Normalized Difference Vegetation Index (NDVI).
 
 <img src="website_images/NDWI.png" alt="NDWI" width="200"/>
@@ -191,10 +197,10 @@ As we can see, the Pix2pix model implemented by keras achieves the best performa
 <img src="website_images/NDVI.png" alt="NDVI" width="200"/>
 > NDVI can be calculated by Near Infrared (NIR) and Visual bands.
 
-2. To try image segmentation for different ground features;
+- To try image segmentation for different ground features;
 	- Currently, it is common to use PatchGAN as the discriminator of GAN models. However, this process does not take the connectedness of group features into consideration when the model is trying to tell whether the image is real or fake. For example, roads are usually in a curve or straight line shape with a relatively longer length, therefore one patch may only capture a small part of one road, which may not showing the main characteristics of road features. 
 	- This issue could be improved if we apply image segmentation to the images and classify each segment as one type of the ground features, instead of using PatchGAN technique.
-3. To design a “one-for-all” GAN model for map synthesis.
+- To design a “one-for-all” GAN model for map synthesis.
 	- It is still desirable if we could derive a GAN-related model with ONE generator and ONE discriminator to translate satellite images into different kinds of maps.
 
 ## Acknowledgement
