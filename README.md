@@ -1,10 +1,9 @@
 # Map synthesis based on satellite images
 
 ## Table of Contents
-1. [1. Motivation](#1.-motivation)
-2. [2. Literature Review](#2.-literature-Review)
-3. [Third Example](#third-example)
-4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
+[1. Motivation](#1.-motivation)
+[2. Literature Review](#2.-literature-Review)
+
 
 ## 1. Motivation
 
