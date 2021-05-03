@@ -6,7 +6,7 @@
 * [Literature Review](#literature-review)
 * [Methodology](#methodology)
 	* [Datasets](#datasets)
-	* [State-of-the-art models for image translation](#state-of-the-art-models-for-image-translation)
+	* [State-of-the-art models for image translation and implementations](#state-of-the-art-models-for-image-translation-and-implementations)
 		* [Pix2pix](#pix2pix)
 		* [CycleGAN](#cycleGAN)
 		* [BicycleGAN](#bicycleGAN)
@@ -15,7 +15,7 @@
 * [Results and analysis](#results-and-analysis)
 	* [Pix2pix-sat2google](#pix2pix-sat2google)
 	* [CycleGAN-sat2google sat2baidu sat2worldmap](#cycleGAN-sat2google-sat2baidu-sat2worldmap)
-	* [BicycleGAN-sat2google-CycleGAN-sat2google](#bicycleGAN-sat2google-cycleGAN-sat2google)
+	* [BicycleGAN-sat2google vs CycleGAN-sat2google](#bicycleGAN-sat2google-vs-cycleGAN-sat2google)
 	* [StarGAN-sat2all](#starGAN-sat2all)
 * [Evaluation](#evaluation)
 	* [Human metrics-Amazon Mechanical Turk](#human-metrics-amazon-mechanical-turk)
@@ -28,6 +28,7 @@
 ## Motivation
 
 ![motivation](website_images/motivation.png)
+> Figure 1. The question of our project.
 
 Map-related services are essential in our daily life, as we utilize maps for various scenarios and applications, e.g., daily
 commuting navigation, logistics distribution system, queries and visualization of geographic information, request of
@@ -66,56 +67,80 @@ Furthermore, there are two other recent, promising, and GAN-based studies for im
 ![datasets](website_images/datasets.png)
 > Figure 2. Seven datasets with detailed information in our project. 
 
-> The first one is satellite images, which are the source for image translation. On the other hand, we collected six different kinds of targeted maps, such as google maps, baidu maps, world maps, etc.
+The first one is satellite images, which are the source for image translation. On the other hand, we collected six different kinds of targeted maps, such as google maps, baidu maps, world maps, etc. These datasets have been uploaded to our github website and can be found in their corresponding experiments under the "data" folder.
 
-### State-of-the-art models for image translation
+### State-of-the-art models for image translation and implementations
 
 ![4 models](website_images/4models.png)
-> Figure 3. Summary of four state-of-the-art models for image translation
+> Figure 3. Summary of four state-of-the-art models for image translation.
 
 #### Pix2pix
 
 ![pix2pix](website_images/p2p.png)
 > Figure 4. The architecture of pix2pix. 
 
-> Pix2pix architecture includes a U-net Generator and a PatchGAN discriminator. It is easy to implement with less computations, however, one of the disadvantages is that it requires paired datasets for training.
+Basically, pix2pix architecture includes a U-net Generator and a PatchGAN discriminator. It is easy to implement with less computations, however, one of its disadvantages is that it requires paired datasets for model training. 
 
 #### CycleGAN
 
 ![CycleGAN](website_images/cyclegan.png)
-> Figure 5. CycleGan doesn't require paired datasets for training. The architecture of CycleGAN includes two generators G and F. G generates Y domain images based on X domain input, while F generates the versus. The cycle process is constrained by the cycle-consistency loss. However, one of the disadvantages for CycleGAN is lacking diversity of styles for the output.
+> Figure 5. The architecture of CycleGan. 
+
+CycleGan doesn't require paired datasets for model training. The architecture of CycleGAN includes two generators G and F. G generates Y domain images based on X domain input, while F generates the versus. The cycle process is constrained by the cycle-consistency loss. However, one of the disadvantages for CycleGAN is lacking diversity of styles for the output.
 
 #### BicycleGAN
 
 ![BicycleGAN](website_images/bicycleGan.png)
-> Figure 6. BicycleGAN can produce multiple styles for the targeted domain. The architecture of BicycleGAN includes two cycle processes. One involves the ground truth B versus the output B hat, And the other cycle is about a randomly sampled latent code versus the reconstructed latent code. However, one of the weaknesses is that BicycleGAN performs image translation only between two domains.
+> Figure 6. The architecture of BicycleGAN. (c) cVAE-GAN (and cAE-GAN) starts from a ground truth target image B and encode it into the latent space. The generator then attempts to map the input image A along with a sampled z back into the original image B. (d) cLR-GAN randomly samples a latent code from a known distribution, uses it to map A into the output ^B
+, and then tries to reconstruct the latent code from the output.
+
+Our hybrid BicycleGAN method combines constraints in both directions (c) and (d), which consists of two cycle processes. One involves the ground truth B versus the output B hat, And the other cycle is about a randomly sampled latent code versus the reconstructed latent code. With this architecture, BicycleGAN can produce multiple styles for the targeted domain. However, one of the weaknesses is that BicycleGAN performs image translation only between two domains. 
+
+> We implemented BicycleGAN as the pytorch default setting in our project, and you could check it out in our github "code" folder For more details. 
 
 #### StarGAN
 
 ![starGAN](website_images/starGan.png)
-> Figure 7. StarGAN can produce multiple domains (for example, 5 domains here) with only ONE generator, instead of calculating n * (n-1) generators if we have n domains.
+![starGAN](website_images/starGan2.png)
+> Figure 7. The architecture of StarGAN, consisting of two modules, a discriminator D and a generator G. (a) D learns to distinguish between real and fake images and classify the real images to its corresponding domain. (b) G takes in as input both the image and target domain label and generates an fake image. The target domain label is spatially replicated and concatenated with the input image. (c) G tries to reconstruct the original image from the fake image given the original domain label. (d) G tries to generate images indistinguishable from real images and classifiable as target domain by D.
+
+> StarGAN can produce multiple domains (for example, 5 domains here) with only ONE generator, instead of calculating n * (n-1) generators if there are n domains.
+
+![starGAN](website_images/starGan3.png)
+> Figure 7. The upgrade of StarGAN-v2, consisting of four modules. (a) The generator translates an input image into an output image reflecting the domain-specific style code. (b) The mapping network transforms a latent code into style codes for multiple domains, one of which is randomly selected during training. (c) The style encoder extracts the style code of an image, allowing the generator to perform referenceguided image synthesis. (d) The discriminator distinguishes between real and fake images from multiple domains. Note that all modules except the generator contain multiple output branches, one of which is selected when training the corresponding domain. 
+
+> We implemented StarGAN-v2 as the pytorch default setting in our project, and you could check it out in our github "code" folder For more details. 
+
 
 ### Workflow
 
 ![Workflow](website_images/workflow8.png)
-> Figure 8. We conducted 6 experiments with different GAN models and different targeted domains. Each experiment will be fed with its corresponding training input, and then produce the output. And each output will be evaluated by quantitative metrics as well as Human evaluation.
+> Figure 8. Project workflow with 6 experiments. 
+
+We conducted 6 experiments with different GAN models and different targeted domains. Each experiment will be fed with its corresponding training input, and then produce the output. And each output will be evaluated by quantitative metrics (e.g., FID and LPIPS) as well as human evaluation (e.g., Amazon Mechanical Turk).
 
 ## Results and analysis
 
 ### Pix2pix-sat2google
 
 ![Pix2pix-sat2google](website_images/Pix2pix-sat2google.png)
-> Figure 9. for the experiment of Pix2pix for sat2google, the result seems fair. Most of the generated features, such as buildings, waterbodies, roads, and green space are located correctly, with shapes and colors matching with the ground truth.
+> Figure 9. The results of Pix2pix-sat2google.
+
+for the experiment of Pix2pix for sat2google, the result seems fair. Most of the generated features, such as buildings, waterbodies, roads, and green space are located correctly, with shapes and colors matching with the ground truth.
 
 ### CycleGAN-sat2google sat2baidu sat2worldmap
 
 ![CycleGAN-sat2google, sat2baidu, sat2worldmap](website_images/CycleGAN-sat2google-sat2baidu-sat2worldmap.png)
-> Figure 10. First, for sat2google, the roads seem not be captured very well, but the green space seem even more fitting compared with the ground truth. As for sat2baidu and sat2worldmap, Both results are not very realistic, although most of the ground features still can be captured, such as roads and rivers.
+> Figure 10. The results of CycleGAN-sat2google, sat2baidu, sat2worldmap.
 
-### BicycleGAN-sat2google-CycleGAN-sat2google
+First, for sat2google, the roads seem not be captured very well, but the green space seem even more fitting compared with the ground truth. As for sat2baidu and sat2worldmap, both results are not very realistic, although most of the ground features still can be captured, such as roads and rivers.
+
+### BicycleGAN-sat2google vs CycleGAN-sat2google
 
 ![BicycleGAN-sat2google-CycleGAN-sat2google](website_images/BicycleGAN-sat2google-CycleGAN-sat2google.png)
-> Figure 11. Next is the result from BicycleGAN for sat2google, with a comparison to CycleGAN. Although BicycleGAN can produce multiple styles for the google maps, yet many green space regions are overfitting. Specifically, BicycleGAN misinterprets the waterbodies as the green space, while the CycleGAN can capture waterbodies correctly.
+> Figure 11. The results of BicycleGAN-sat2google vs. CycleGAN-sat2google.
+
+Next is the result from BicycleGAN for sat2google, with a comparison to CycleGAN. Although BicycleGAN can produce multiple styles for the google maps, yet many green space regions are overfitting. Specifically, BicycleGAN misinterprets the waterbodies as the green space, while the CycleGAN can capture waterbodies correctly.
 
 ### StarGAN-sat2all
 
