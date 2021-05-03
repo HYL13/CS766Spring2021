@@ -104,7 +104,7 @@ Our hybrid BicycleGAN method combines constraints in both directions (c) and (d)
 ![starGAN](website_images/starGan2.png)
 > Figure 7. The architecture of StarGAN, consisting of two modules, a discriminator D and a generator G. (a) D learns to distinguish between real and fake images and classify the real images to its corresponding domain. (b) G takes in as input both the image and target domain label and generates an fake image. The target domain label is spatially replicated and concatenated with the input image. (c) G tries to reconstruct the original image from the fake image given the original domain label. (d) G tries to generate images indistinguishable from real images and classifiable as target domain by D.
 
-> StarGAN can produce multiple domains (for example, 5 domains here) with only ONE generator, instead of calculating n * (n-1) generators if there are n domains.
+> StarGAN can produce multiple domains with only ONE generator, instead of calculating n * (n-1) generators if there are n domains.
 
 ![starGAN](website_images/starGan3.png)
 > Figure 8. The upgrade of StarGAN-v2, consisting of four modules. (a) The generator translates an input image into an output image reflecting the domain-specific style code. (b) The mapping network transforms a latent code into style codes for multiple domains, one of which is randomly selected during training. (c) The style encoder extracts the style code of an image, allowing the generator to perform referenceguided image synthesis. (d) The discriminator distinguishes between real and fake images from multiple domains. Note that all modules except the generator contain multiple output branches, one of which is selected when training the corresponding domain. 
