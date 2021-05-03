@@ -84,12 +84,16 @@ The first one is satellite images, which are the source for image translation. O
 
 Basically, pix2pix architecture includes a U-net Generator and a PatchGAN discriminator. It is easy to implement with less computations, however, one of its disadvantages is that it requires paired datasets for model training. 
 
+> For detailed information of pix2pix implementation, please refer to our [mid-term report](reports/project-mid-term-report.pdf).
+
 #### CycleGAN
 
 ![CycleGAN](website_images/cyclegan.png)
 > Figure 5. The architecture of CycleGan. 
 
 CycleGan doesn't require paired datasets for model training. The architecture of CycleGAN includes two generators G and F. G generates Y domain images based on X domain input, while F generates the versus. The cycle process is constrained by the cycle-consistency loss. However, one of the disadvantages for CycleGAN is lacking diversity of styles for the output.
+
+> For detailed information of pix2pix implementation, please refer to our [mid-term report](reports/project-mid-term-report.pdf).
 
 #### BicycleGAN
 
