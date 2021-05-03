@@ -197,11 +197,14 @@ As we can see, the Pix2pix model implemented by keras achieves the best performa
 
 <img src="website_images/NDWI.png" alt="NDWI" width="200"/>
 
-> NDWI can be calculated by Near Infrared (NIR) and SWIR bands.
+
+> NDWI can be calculated by Near Infrared (NIR) and SWIR bands. 
+
 
 <img src="website_images/NDVI.png" alt="NDVI" width="200"/>
 
-> NDVI can be calculated by Near Infrared (NIR) and Visual bands.
+> NDVI can be calculated by Near Infrared (NIR) and Visual bands. 
+
 
 - To try image segmentation for different ground features;
 	- Currently, it is common to use PatchGAN as the discriminator of GAN models. However, this process does not take the connectedness of group features into consideration when the model is trying to tell whether the image is real or fake. For example, roads are usually in a curve or straight line shape with a relatively longer length, therefore one patch may only capture a small part of one road, which may not showing the main characteristics of road features. 
