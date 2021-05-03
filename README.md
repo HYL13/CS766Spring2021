@@ -27,6 +27,8 @@
 
 ## Motivation
 
+![motivation](website_images/motivation.png)
+
 Map-related services are essential in our daily life, as we utilize maps for various scenarios and applications, e.g., daily
 commuting navigation, logistics distribution system, queries and visualization of geographic information, request of
 high-definition maps for self-driving vehicles, etc. Therefore, generating applicable maps and maintaining their latest
@@ -61,7 +63,7 @@ Furthermore, there are two other recent, promising, and GAN-based studies for im
 
 ### Datasets
 
-![image](website_images/datasets.png)
+![datasets](website_images/datasets.png)
 > Figure 2. Seven datasets with detailed information in our project. 
 
 > The first one is satellite images, which are the source for image translation. On the other hand, we collected six different kinds of targeted maps, such as google maps, baidu maps, world maps, etc.
@@ -69,12 +71,14 @@ Furthermore, there are two other recent, promising, and GAN-based studies for im
 ### State-of-the-art models for image translation
 
 ![4 models](website_images/4models.png)
-> Figure 3. summary of four state-of-the-art models for image translation
+> Figure 3. Summary of four state-of-the-art models for image translation
 
 #### Pix2pix
 
 ![pix2pix](website_images/p2p.png)
-> Figure 4. architecture of pix2pix includes a U-net Generator and a PatchGAN discriminator. It is easy to implement with less computations, however, one of the disadvantages is that it requires paired datasets for training.
+> Figure 4. The architecture of pix2pix. 
+
+> Pix2pix architecture includes a U-net Generator and a PatchGAN discriminator. It is easy to implement with less computations, however, one of the disadvantages is that it requires paired datasets for training.
 
 #### CycleGAN
 
