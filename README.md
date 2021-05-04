@@ -3,7 +3,7 @@
 ## Table of Contents
 <!--ts-->
 * [Motivation](#motivation)
-* [Literature Review](#literature-review)
+* [Literature review](#literature-review)
 * [Methodology](#methodology)
 	* [Datasets](#datasets)
 	* [State-of-the-art models for image translation and implementations](#state-of-the-art-models-for-image-translation-and-implementations)
@@ -40,7 +40,7 @@ global coverage can be obtained frequently by sensors on aircraft/satellites. Th
 and aesthetically based on satellite images** has become an emerging research direction for mapping agencies and
 institutions.
 
-## Literature Review
+## Literature review
 
 **Generative Adversarial Network (GAN)**, a framework for estimating generative models via an adversarial process, was
 first proposed (Goodfellow et al., 2014) with two models being trained simultaneously: a generative model G that
@@ -93,17 +93,16 @@ Basically, pix2pix architecture includes a U-net Generator and a PatchGAN discri
 
 CycleGan doesn't require paired datasets for model training. The architecture of CycleGAN includes two generators G and F. G generates Y domain images based on X domain input, while F generates the versus. The cycle process is constrained by the cycle-consistency loss. However, one of the disadvantages for CycleGAN is lacking diversity of styles for the output.
 
-> For detailed information of pix2pix implementation, please refer to our [mid-term report](reports/project-mid-term-report.pdf).
+> For detailed information of CycleGAN implementation, please refer to our [mid-term report](reports/project-mid-term-report.pdf).
 
 #### BicycleGAN
 
 ![BicycleGAN](website_images/bicycleGan.png)
-> Figure 6. The architecture of BicycleGAN. (c) cVAE-GAN (and cAE-GAN) starts from a ground truth target image B and encode it into the latent space. The generator then attempts to map the input image A along with a sampled z back into the original image B. (d) cLR-GAN randomly samples a latent code from a known distribution, uses it to map A into the output ^B
-, and then tries to reconstruct the latent code from the output.
+> Figure 6. The architecture of BicycleGAN. (c) cVAE-GAN (and cAE-GAN) starts from a ground truth target image B and encode it into the latent space. The generator then attempts to map the input image A along with a sampled z back into the original image B. (d) cLR-GAN randomly samples a latent code from a known distribution, uses it to map A into the output ^B, and then tries to reconstruct the latent code from the output.
 
 Our hybrid BicycleGAN method combines constraints in both directions (c) and (d), which consists of two cycle processes. One involves the ground truth B versus the output B hat, And the other cycle is about a randomly sampled latent code versus the reconstructed latent code. With this architecture, BicycleGAN can produce multiple styles for the targeted domain. However, one of the weaknesses is that BicycleGAN performs image translation only between two domains. 
 
-> We implemented BicycleGAN as the pytorch default setting in our project, and you could check it out in our github "code" folder For more details. 
+> We implemented BicycleGAN as the pytorch default setting in our project, and you could check it out in our github "code" folder for more details. 
 
 #### StarGAN
 <img src="website_images/starGan.png" alt="starGan" width="500"/>
@@ -116,7 +115,7 @@ Our hybrid BicycleGAN method combines constraints in both directions (c) and (d)
 ![starGAN](website_images/starGan3.png)
 > Figure 8. The upgrade of StarGAN-v2, consisting of four modules. (a) The generator translates an input image into an output image reflecting the domain-specific style code. (b) The mapping network transforms a latent code into style codes for multiple domains, one of which is randomly selected during training. (c) The style encoder extracts the style code of an image, allowing the generator to perform referenceguided image synthesis. (d) The discriminator distinguishes between real and fake images from multiple domains. Note that all modules except the generator contain multiple output branches, one of which is selected when training the corresponding domain. 
 
-> We implemented StarGAN-v2 as the pytorch default setting in our project, and you could check it out in our github "code" folder For more details. 
+> We implemented StarGAN-v2 as the pytorch default setting in our project, and you could check it out in our github "code" folder for more details. 
 
 
 ### Workflow
