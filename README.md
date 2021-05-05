@@ -165,6 +165,8 @@ As we can see, the results are barely desirable. The model only captures the lat
 
 ### Evaluation
 
+The implementation of human evaluation and quantitative metrics could be found in our github "evaluation" folder.
+
 #### Human metrics-Amazon Mechanical Turk
 
 ![Amazon Mechanical Turk](website_images/turk.png)
