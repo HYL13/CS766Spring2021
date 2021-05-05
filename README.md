@@ -154,7 +154,7 @@ There is one possible reason behind these “flaws” – the frequencies of som
 ![BicycleGAN-sat2google-CycleGAN-sat2google](website_images/BicycleGAN-sat2google-CycleGAN-sat2google.png)
 > Figure 12. The results of BicycleGAN-sat2google vs. CycleGAN-sat2google.
 
-Next is the result from BicycleGAN for sat2google, with a comparison to CycleGAN. Although BicycleGAN can produce multiple styles for the google maps, yet many green space regions are overfitting. Specifically, BicycleGAN misinterprets the waterbodies as the green space, while the CycleGAN can capture waterbodies correctly.
+The results above are from BicycleGAN for sat2google, with a comparison to CycleGAN. Although BicycleGAN can produce multiple styles for the google maps, yet many green space regions are overfitting. Specifically, BicycleGAN misinterprets the waterbodies as the green space, while the CycleGAN can capture waterbodies correctly.
 
 ### StarGAN-sat2all
 
