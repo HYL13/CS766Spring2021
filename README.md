@@ -206,13 +206,13 @@ As we can see, the Pix2pix model implemented by keras achieves the best performa
 
 
 - To try image segmentation for different ground features;
-	- Currently, it is common to use PatchGAN as the discriminator of GAN models. However, this process does not take the connectedness of group features into consideration when the model is trying to tell whether the image is real or fake. For example, roads are usually in a curve or straight line shape with a relatively longer length, therefore one patch may only capture a small part of one road, which may not showing the main characteristics of road features. 
+	- Currently, it is common to use PatchGAN as the discriminator of GAN models. However, this process does not take the connectedness of ground features into consideration when the model is trying to tell whether the image is real or fake. For example, roads are usually in a curve or straight line shape with a relatively longer length, therefore one patch may only capture a small part of one road, which may not showing the main characteristics of road features. 
 	- This issue could be improved if we apply image segmentation to the images and classify each segment as one type of the ground features, instead of using PatchGAN technique.
 - To design a “one-for-all” GAN model for map synthesis.
 	- It is still desirable if we could derive a GAN-related model with ONE generator and ONE discriminator to translate satellite images into different kinds of maps.
 
 ## Acknowledgement
-Previsouly we encoutered an issue about computation resources mentioned in our mid-report. This issue was solved later by using a server from the Spatial Computing and Data Mining Lab at UW-Madison. We would like to thank them for their great support in our project.
+Previsouly we encoutered an issue about computation resources mentioned in our mid-term report. This issue was solved later by using a server from the Spatial Computing and Data Mining Lab at UW-Madison. We would like to thank them for their great support in our project.
 
 ## Major References
 
