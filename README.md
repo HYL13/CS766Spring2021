@@ -161,7 +161,7 @@ Next is the result from BicycleGAN for sat2google, with a comparison to CycleGAN
 ![StarGAN-sat2all](website_images/StarGAN-sat2all.png)
 > Figure 13. The results of StarGAN-sat2all. 
 
-As we can see, the results are barely desirable. The model only capture the latent code of the targeted domain, but cannot recognize the features’ locations and shapes. We assume this issue might be due to feature mismatch. Specifically, the original dataset for the StarGAN paper is images with human faces, and each image has all face features such as eyes, nose, mouth, etc. But as for the datasets fpr map generation, each image does not necessarily have all ground features, such as buildings, waterbodies, roads, green space, etc. Therefore, StarGAN may not be suitable for map synthesis here.
+As we can see, the results are barely desirable. The model only captures the latent code of the targeted domain, but cannot recognize the locations and shapes of the ground features. We assume this issue might be due to feature mismatch. Specifically, the original dataset for the StarGAN paper is images with human faces, and each image has all face features such as eyes, nose, mouth, etc. But as for the datasets for map generation, each image does not necessarily contain all ground features, such as buildings, waterbodies, roads, green space, etc. Therefore, StarGAN may not be suitable for map synthesis here.
 
 ### Evaluation
 
