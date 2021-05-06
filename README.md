@@ -89,9 +89,9 @@ Basically, pix2pix architecture includes a U-net Generator and a PatchGAN discri
 #### CycleGAN
 
 ![CycleGAN](website_images/cyclegan.png)
-> Figure 5. The architecture of CycleGan. 
+> Figure 5. The architecture of CycleGAN. 
 
-CycleGan doesn't require paired datasets for model training. The architecture of CycleGAN includes two generators G and F. G generates Y domain images based on X domain input, while F generates the versus. The cycle process is constrained by the cycle-consistency loss. However, one of the disadvantages for CycleGAN is lacking diversity of styles for the output.
+CycleGAN doesn't require paired datasets for model training. The architecture of CycleGAN includes two generators G and F. G generates Y domain images based on X domain input, while F generates the versus. The cycle process is constrained by the cycle-consistency loss. However, one of the disadvantages for CycleGAN is lacking diversity of styles for the output.
 
 > For detailed information of CycleGAN implementation, please refer to our [mid-term report](reports/project-mid-term-report.pdf).
 
@@ -113,7 +113,7 @@ Our hybrid BicycleGAN method combines constraints in both directions (c) and (d)
 > Figure 7. The architecture of StarGAN, consisting of two modules, a discriminator D and a generator G. (a) D learns to distinguish between real and fake images and classify the real images to its corresponding domain. (b) G takes in as input both the image and target domain label and generates an fake image. The target domain label is spatially replicated and concatenated with the input image. (c) G tries to reconstruct the original image from the fake image given the original domain label. (d) G tries to generate images indistinguishable from real images and classifiable as target domain by D.
 
 ![starGAN](website_images/starGan3.png)
-> Figure 8. The upgrade of StarGAN-v2, consisting of four modules. (a) The generator translates an input image into an output image reflecting the domain-specific style code. (b) The mapping network transforms a latent code into style codes for multiple domains, one of which is randomly selected during training. (c) The style encoder extracts the style code of an image, allowing the generator to perform referenceguided image synthesis. (d) The discriminator distinguishes between real and fake images from multiple domains. Note that all modules except the generator contain multiple output branches, one of which is selected when training the corresponding domain. 
+> Figure 8. The upgrade of StarGAN-v2, consisting of four modules. (a) The generator translates an input image into an output image reflecting the domain-specific style code. (b) The mapping network transforms a latent code into style codes for multiple domains, one of which is randomly selected during training. (c) The style encoder extracts the style code of an image, allowing the generator to perform reference-guided image synthesis. (d) The discriminator distinguishes between real and fake images from multiple domains. Note that all modules except the generator contain multiple output branches, one of which is selected when training the corresponding domain. 
 
 > We implemented StarGAN-v2 as the pytorch default setting in our project, and you could check it out in our github "code" folder for more details. 
 
@@ -177,7 +177,7 @@ As we can see, the results are barely desirable. The model only captures the lat
 ![Quantitative](website_images/eval.png)
 > Figure 15. Quantitative evaluation for each experiment. 
 
-As we can see, the Pix2pix model implemented by keras achieves the best performance, based on both FID scores and AMT votes. Followed by the performances of Cyclegans and Bicyclegan. 
+As we can see, the Pix2pix model implemented by keras achieves the best performance, based on both FID scores and AMT votes, followed by the performances of CycleGANs and BicycleGAN. 
 > The Fréchet inception distance (FID) is a metric used to assess the quality of images created by GANs. Unlike the earlier inception score (IS), which evaluates only the distribution of generated images, the FID is a metric that calculates the distance between the feature vectors calculated for real and generated images. The score summarizes how similar the two groups are in terms of statistics on computer vision features using the inception v3 model for image classification. Lower scores indicate the two groups of images are more similar, or have more similar statistics. 
 
 > LPIPS means learned perceptual image patch similarity. It is another evaluation metrics for GANs and calculates the similarity of two patches based on the learnt perceptions just like human.
@@ -214,7 +214,7 @@ As we can see, the Pix2pix model implemented by keras achieves the best performa
 	- It is still desirable if we could derive a GAN-related model with ONE generator and ONE discriminator to translate satellite images into different kinds of maps.
 
 ## Acknowledgement
-Previsouly we encoutered an issue about computation resources mentioned in our mid-term report. This issue was solved later by using a server from the Spatial Computing and Data Mining Lab at UW-Madison. We would like to thank them for their great support in our project.
+Previously we encountered an issue about computation resources mentioned in our mid-term report. This issue was solved later by using a server from the Spatial Computing and Data Mining Lab at UW-Madison. We would like to thank them for their great support in our project.
 
 ## Major References
 
